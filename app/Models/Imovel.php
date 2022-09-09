@@ -14,6 +14,7 @@ class Imovel extends Model
     protected $KeyType = 'string';
 
     protected $fillable = [
+        'uuid',
         'name',
         'address',
         'description',

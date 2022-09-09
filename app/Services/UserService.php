@@ -19,16 +19,10 @@ class UserService extends AbstractService
     {
         $filtros = null;
 
-        /**
-         * Carrega os filtros
-         */
         if($request->has('filtros')) {
             $filtros = $request->get('filtros');
         }
 
-        /**
-         * Monta o filtro e passa pro repository
-         */
         if(isset($filtros)) {
             $response = $this->mountFilter($filtros);
 
@@ -37,9 +31,6 @@ class UserService extends AbstractService
             }
         }
 
-        /**
-         * Verifica se foi passado paginação
-         */
         if($request->per_page) {
             $per_page = $request->per_page;
         }
@@ -80,9 +71,6 @@ class UserService extends AbstractService
     {
         $user = $this->show($uuid);
 
-        /**
-         * Armazena os dados do usuário em um array
-         */
         $data = [
             'name'           => $request->name,
             'email'          => $request->email,
@@ -100,10 +88,6 @@ class UserService extends AbstractService
     public function destroyUser($user)
     {
         return $this->repository->destroy($user);
-    }
-
-    public function getUserByUuidTrashed($uuid){
-        return $this->repository->getTrashed($uuid);
     }
 
     public function getUserByUuid($uuid){

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Imovel;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ImovelController extends Controller
+class ImagemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,16 +13,6 @@ class ImovelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
         //
     }
@@ -41,21 +31,10 @@ class ImovelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Imovel  $imovel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Imovel $imovel)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Imovel  $imovel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Imovel $imovel)
+    public function show($id)
     {
         //
     }
@@ -64,10 +43,10 @@ class ImovelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Imovel  $imovel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Imovel $imovel)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +54,10 @@ class ImovelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Imovel  $imovel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Imovel $imovel)
+    public function destroy($id)
     {
         //
     }

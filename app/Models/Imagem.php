@@ -14,6 +14,7 @@ class Imagem extends Model
     protected $KeyType = 'string';
 
     protected $fillable = [
+        'uuid',
         'imovel_id',
         'name',
         'url',

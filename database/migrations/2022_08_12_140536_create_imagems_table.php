@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('imagems', function (Blueprint $table) {
             $table->uuid('id');
-
+            $table->uuid('uuid');
             $table->foreignUuid('imovel_id')->constrained('imovels');
             $table->string('name');
             $table->string('url');
