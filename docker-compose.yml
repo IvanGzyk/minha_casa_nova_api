@@ -3,7 +3,7 @@ version: "3.7"
 services:
     # image project
     app:
-        container_name: minhaCasaNovaLaravel8
+        container_name: api_minhaCasaNova
         build:
             context: .
             dockerfile: Dockerfile
@@ -19,11 +19,11 @@ services:
 
     # nginx
     nginx:
-        container_name: nginx
+        container_name: nginx_minhaCasaNova
         image: nginx:alpine
         restart: unless-stopped
         ports:
-            - "8989:80"
+            - "8000:80"
         volumes:
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
@@ -32,7 +32,7 @@ services:
 
     # db mysql
     mysql:
-        container_name: mysql
+        container_name: mysql_minhaCasaNova
         image: mysql:5.7.22
         restart: unless-stopped
         environment:
@@ -43,13 +43,13 @@ services:
         volumes:
             - ./.docker/mysql/dbdata:/var/lib/mysql
         ports:
-            - "3388:3306"
+            - "3366:3306"
         networks:
             - laravel-9
 
     # queue
     queue:
-        container_name: queue
+        container_name: queue_minhaCasaNova
         image: especializati/laravel9-app
         restart: unless-stopped
         command: "php artisan queue:work"
@@ -63,7 +63,7 @@ services:
 
     # redis
     redis:
-        container_name: redis
+        container_name: redis_minhaCasaNova
         image: redis:latest
         networks:
             - laravel-9
