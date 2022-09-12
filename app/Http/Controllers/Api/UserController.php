@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Resources\UserResource;
 use App\Http\Requests\FormRequestUser;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -66,6 +67,7 @@ class UserController extends Controller
      */
     public function show($uuid)
     {
+        dd(auth()->user()->HasRole('manager'));
         if (!$user = $this->userService->show($uuid)) {
             return response()->json(["mensagem" => "'identify' não encontrado!"], 404);
         }

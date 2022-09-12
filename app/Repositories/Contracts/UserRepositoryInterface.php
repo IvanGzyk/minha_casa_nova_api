@@ -27,4 +27,7 @@ interface UserRepositoryInterface
     /**
      * métodos exclusivos do usuário
      */
+    public function assignRole(object $user, string $role);
+
+    public function syncRole(object $user, string $role);
 }

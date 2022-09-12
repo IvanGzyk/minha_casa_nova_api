@@ -22,5 +22,7 @@ class UserSeeder extends Seeder
             'email' => 'ivangzyk@hotmail.com',
             'password' => bcrypt('admin'),
         ]);
+
+        $userMaster->assignRole('master');
     }
 }

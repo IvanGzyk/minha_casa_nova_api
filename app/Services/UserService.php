@@ -59,6 +59,11 @@ class UserService extends AbstractService
         if(!$user)
             return response()->json(['mensagem' => 'O servidor encontrou um erro e não pode criar o usuário'], 500);
 
+        $role = $this->repository->assignRole($user, $request->role);
+
+        if(!$role)
+            return response()->json(['mensagem' => 'O servidor encontrou um erro e não pode criar a role'], 500);
+
         return response()->json($user, 200);
     }
 
@@ -81,6 +86,11 @@ class UserService extends AbstractService
 
         if(!$response)
             return response()->json(['mensagem' => 'O servidor encontrou um erro e não pode atualizar o usuário'], 500);
+
+        $role = $this->repository->syncRole($user, $request->role);
+
+        if(!$role)
+            return response()->json(['mensagem' => 'O servidor encontrou um erro e não pode atualizar a role'], 500);
 
         return response()->json($this->show($uuid), 200);
     }

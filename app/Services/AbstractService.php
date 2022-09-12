@@ -63,6 +63,14 @@ abstract class AbstractService
         return auth()->user()->hasRole('master') ? true : false;
     }
 
+    /**
+     * Verifica se o usuario logado é Manager
+     */
+    protected function isManager()
+    {
+        return auth()->user()->hasRole('manager') ? true : false;
+    }
+
     protected function convert_mins_to_hours(int $minutes_actually): string
     {
         $minutes = $minutes_actually;

@@ -12,4 +12,14 @@ class UserRepository extends AbstractRepository implements UserRepositoryInterfa
     {
         parent::__construct($user);
     }
+
+    public function assignRole($user, $role)
+    {
+        return $user->assignRole($role);
+    }
+
+    public function syncRole($user, $role)
+    {
+        return $user->syncRoles($role);
+    }
 }

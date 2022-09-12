@@ -24,12 +24,17 @@ class FormRequestUser extends FormRequest
      */
     public function rules()
     {
+        $user = auth()->user();
+        $validate = array();
+        $validate = $user->hasRole('master') ? ['master','manager', 'seller'] : ['seller'];
+
         switch ($this->method()) {
             case 'POST':
                 return [
                     'name'                 => 'required|string|max:255',
                     'email'                => 'required|string|email|max:255|unique:users',
                     'password'             => 'required|string|min:6',
+                    'role'                 =>  ['required', Rule::in($validate)],
                 ];
                 break;
             case 'PUT':
@@ -37,6 +42,7 @@ class FormRequestUser extends FormRequest
                     'name'                 => 'required|string|max:255',
                     'email'                => "required|string|email|max:255|unique:users,email,{$this->user},uuid",
                     'password'             => 'nullable|string|min:6',
+                    'role'                 =>  ['required', Rule::in($validate)],
                 ];
         }
     }
